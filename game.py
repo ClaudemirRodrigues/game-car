@@ -23,6 +23,8 @@ indice_pista3 = 0
 indice_pista4 = 0
 flag = 0
 flag_1 = 0
+flag_2 = 0
+flag_3 = 0
 flag_pos = 0
 
 pygame.mixer.init()
@@ -143,8 +145,28 @@ while janela_aberta:
             if (pos_y_pista1 + 250 != flag_1) and (flag_1 == 0):
                 flag_1 = pos_y_pista1 + 250
                 batida.play(0)
+                
+    # colisão da segunda pista
+    if (pos_y_pista2 > flag_2) and flag_2 != 0:
+        flag_2 = 0
+    if (x + 170 > pos_x) and (x + 10 < pos_x) and ((y + 120 > pos_y_pista2) and (y - 120 < pos_y_pista2)):
+        pontos -= 1
+        print('Batida na 2ª pista!')
+        if (flag_2 != pos_y_pista2) and (flag_2 == 0):
+            if (pos_y_pista2 + 250 != flag_2) and (flag_2 == 0):
+                flag_2 = pos_y_pista2 + 250
+                batida.play(0)
 
-
+    # colisão da terceira pista
+    if (pos_y_pista3 > flag_3) and flag_3 != 0:
+        flag_3 = 0
+    if (x - 120 < pos_x) and (x + 40 > pos_x) and ((y + 120 > pos_y_pista3) and (y - 120 < pos_y_pista3)):
+        pontos -= 1
+        print('Batida na 3ª pista!')
+        if (flag_3 != pos_y_pista3) and (flag_3 == 0):
+            if (pos_y_pista3 + 250 != flag_3) and (flag_3 == 0):
+                flag_3 = pos_y_pista3 + 250
+                batida.play(0)
 
     pygame.display.update()
 
